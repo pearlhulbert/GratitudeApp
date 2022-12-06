@@ -1,10 +1,9 @@
 import '../App.css';
 import React, {useInsertionEffect, useState} from 'react';
 import {TextField , Button } from '@mui/material';
-import Memory from './pages/Memory';
-import { db } from './firebase.js';
+import Memory from './Memory';
+import { db } from '../firebaseConfig.js';
 import { collection, query, onSnapshot, serverTimestamp, addDoc } from 'firebase/firestore';
-import './App.css';
 
 //const q = query(collection(db, 'todos'), orderBy('timestamp', 'desc'));
 function Journal() {
@@ -37,6 +36,9 @@ function Journal() {
         onChange={e=>setInput(e.target.value)} />
         <Button variant="contained" color="primary" onClick={addTodo}  >Add Todo</Button>
       </form>
+       <ul>
+          {todos.map(item => <Memory key = {item.id} arr={item} />)}
+        </ul>
     </div>
   );
 }
