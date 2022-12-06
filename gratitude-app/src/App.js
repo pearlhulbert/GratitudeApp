@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Journal from "./pages/Journal";
-import Memories from "./pages/Memories";
+import Layout from "./pages/Layout.js";
+import Journal from "./pages/Journal.js";
+import Memories from "./pages/Memories.js";
 import './App.css';
 
 

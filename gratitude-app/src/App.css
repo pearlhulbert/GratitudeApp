@@ -1,4 +1,5 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@1,900&family=Satisfy&display=swap');.App {
   text-align: center;
 }
 
@@ -35,4 +36,113 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+   background-color: #F9ECEC; 
+   text-align: center;
+}
+
+h1 {
+  font-size: 75px;
+  font-family: 'Satisfy', cursive;
+}
+
+h2 {
+  font-size: 30px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h3 {
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: 	#802A2A;
+  color: white;
+}
+
+link {
+  font-size: 45px;
+
+}
+
+img {
+  margin: 25px;
+}
+
+.bg-light {
+    background-color: #E1927A !important;
+}
+
+.navbar li {
+        margin-left : 1em;
+        margin-right : 1em;
+        font-size: 20px !important;
+}
+    
+.navbar {
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.navbar > p {
+    font-size: 25px
+}
+ 
+.abt-img {
+   width: 33%;
+display: inline;
+padding: 25px;
+}
+
+.abt-info > p {
+    display: inline;
+    margin: 50px;
+}
+
+.about-container {
+    margin: 25px;
+}
+
+@media all and (max-width: 959px) {
+    #bodyDiv {
+         margin-top: 200px;
+    }
+}
+
+@media all and (min-width: 960px) {
+    #bodyDiv {
+         margin-top: 75px;
+    }
+} 
+
+#baconImages {
+  min-height: 400px;
+}
+
+.baconButton {
+  padding: 5px;
+  margin: 20px;
+}
+
+.rotate {
+    padding: 5px;
+    margin: 20px;
+    transform: rotate(360deg);
+    transition: transform 0.5s linear;
+}
+
+#bacon-ipsum {
+  background-color: black;
+  position:absolute;
+  height:100vh;
+  color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
