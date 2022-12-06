@@ -1,8 +1,8 @@
 import { List , ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import {db} from '../firebase.js';
+import {db} from '../firebaseConfig.js';
 import { doc, deleteDoc } from "firebase/firestore";
-import './todo.css';
+import '../todo.css';
 
 const Memory=({arr})=>{
     return (
