@@ -11,7 +11,7 @@ const Memory=({arr})=>{
             <ListItemAvatar />
                 <ListItemText primary={arr.item.todo} secondary={arr.item.todo} />
             </ListItem>
-            <DeleteIcon fontSize="large" style={ {opacity:0.7} } onClick={() => {deleteDoc(doc(db, 'todos', arr.id))}} />
+            <DeleteIcon fontSize="large" style={ {opacity:0.7} } onClick={() => {deleteDoc(doc(db, 'memories', arr.id))}} />
         </List>
     )
 };

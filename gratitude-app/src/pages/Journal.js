@@ -1,7 +1,7 @@
 import '../App.css';
 import React, {useInsertionEffect, useState} from 'react';
 import {TextField , Button } from '@mui/material';
-import Todo from './components/Todo';
+import Memory from './pages/Memory';
 import { db } from './firebase.js';
 import { collection, query, onSnapshot, serverTimestamp, addDoc } from 'firebase/firestore';
 import './App.css';
@@ -12,7 +12,7 @@ function Journal() {
   const [input, setInput]=useState('');
 
   useInsertionEffect(() => {
-    onSnapshot(collection(db, 'todos'), (snapshot)=> {
+    onSnapshot(collection(db, 'memories'), (snapshot)=> {
       setTodos(snapshot.docs.map(doc => ({
         id: doc.id,
         item: doc.data()
@@ -22,7 +22,7 @@ function Journal() {
 
   const addTodo=(e)=>{
     e.preventDefault();
-    addDoc(collection(db, 'todos'), {
+    addDoc(collection(db, 'memories'), {
       todo:input,
       timestamp: serverTimestamp()
   })
@@ -37,9 +37,6 @@ function Journal() {
         onChange={e=>setInput(e.target.value)} />
         <Button variant="contained" color="primary" onClick={addTodo}  >Add Todo</Button>
       </form>
-      <ul>
-        {todos.map(item => <Todo key = {item.id} arr={item} />)}
-      </ul>
     </div>
   );
 }
