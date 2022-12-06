@@ -73,6 +73,12 @@ link {
   font-size: 45px;
 
 }
+
+#header {
+  background-image: url("https://www.airserv.org/wp-content/uploads/2016/09/clouds-header.jpg");
+    background-size: cover;
+    width: 100%;
+}
  
 
 @media all and (max-width: 959px) {

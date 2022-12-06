@@ -30,7 +30,9 @@ function App() {
 
   return (
     <div className="App">
+      <div id = "header">
       <h1>Personal Journal</h1>
+      </div>
       <form>
         <TextField id="outlined-basic" label="Create Journal Entry" variant="outlined" style={{margin:"0px 5px"}} size="small" value={input}
         onChange={e=>setInput(e.target.value)} />
