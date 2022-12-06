@@ -1,16 +1,46 @@
 import '../App.css';
-const Journal = () => {
-  return (<div id = "bodyDiv">
-            <h1>Do you love bacon as much as we do?</h1>
-            <h2>Play our game that will make you hungry for bacon!</h2>
-            <h2>Click on the bacon tab in the bar at the top!</h2>
-            
-            <img src="https://thestayathomechef.com/wp-content/uploads/2020/01/How-To-Cook-Bacon-In-The-Oven-1.jpg" width="50%"></img>
-            <footer>
-        <p>Github Repository: <a href="https://github.com/pearlhulbert/CreativeProject3">https://github.com/pearlhulbert/CreativeProject3</a></p>
-        <p>By: Noelle Marshall, Pearl Hulbert, and Logan Thurman</p>
-    </footer>
-          </div>)
-};
+import React, {useInsertionEffect, useState} from 'react';
+import {TextField , Button } from '@mui/material';
+import Todo from './components/Todo';
+import { db } from './firebase.js';
+import { collection, query, onSnapshot, serverTimestamp, addDoc } from 'firebase/firestore';
+import './App.css';
 
+//const q = query(collection(db, 'todos'), orderBy('timestamp', 'desc'));
+function Journal() {
+  const [todos, setTodos]=useState([]);
+  const [input, setInput]=useState('');
+
+  useInsertionEffect(() => {
+    onSnapshot(collection(db, 'todos'), (snapshot)=> {
+      setTodos(snapshot.docs.map(doc => ({
+        id: doc.id,
+        item: doc.data()
+      })))
+    })
+  }, [input]);
+
+  const addTodo=(e)=>{
+    e.preventDefault();
+    addDoc(collection(db, 'todos'), {
+      todo:input,
+      timestamp: serverTimestamp()
+  })
+    setInput('')
+  };
+
+  return (
+    <div className="App">
+      <h2> TODO List App</h2>
+      <form>
+        <TextField id="outlined-basic" label="Make Todo" variant="outlined" style={{margin:"0px 5px"}} size="small" value={input}
+        onChange={e=>setInput(e.target.value)} />
+        <Button variant="contained" color="primary" onClick={addTodo}  >Add Todo</Button>
+      </form>
+      <ul>
+        {todos.map(item => <Todo key = {item.id} arr={item} />)}
+      </ul>
+    </div>
+  );
+}
 export default Journal;
