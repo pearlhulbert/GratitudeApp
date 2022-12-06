@@ -3,15 +3,15 @@ import React, {useInsertionEffect, useState} from 'react';
 import {TextField , Button } from '@mui/material';
 import Memory from './pages/Memory';
 import { db } from './firebaseConfig.js';
-import { collection, query, onSnapshot, serverTimestamp, addDoc } from 'firebase/firestore';
+import { collection, query, onSnapshot, serverTimestamp, addDoc, orderBy } from 'firebase/firestore';
 
-//const q = query(collection(db, 'todos'), orderBy('timestamp', 'desc'));
 function App() {
   const [todos, setTodos]=useState([]);
   const [input, setInput]=useState('');
+  const q = query(collection(db, 'memories'), orderBy('timestamp', 'desc'));
 
   useInsertionEffect(() => {
-    onSnapshot(collection(db, 'memories'), (snapshot)=> {
+    onSnapshot(q, (snapshot)=> {
       setTodos(snapshot.docs.map(doc => ({
         id: doc.id,
         item: doc.data()
