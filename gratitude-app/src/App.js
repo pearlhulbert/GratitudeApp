@@ -30,15 +30,19 @@ function App() {
 
   return (
     <div className="App">
-      <h2> TODO List App</h2>
+      <h1>Personal Journal</h1>
       <form>
-        <TextField id="outlined-basic" label="Make Todo" variant="outlined" style={{margin:"0px 5px"}} size="small" value={input}
+        <TextField id="outlined-basic" label="Create Journal Entry" variant="outlined" style={{margin:"0px 5px"}} size="small" value={input}
         onChange={e=>setInput(e.target.value)} />
-        <Button variant="contained" color="primary" onClick={addTodo}  >Add Todo</Button>
+        <Button variant="contained" color="primary" onClick={addTodo}  >Add Entry</Button>
       </form>
        <ul>
           {todos.map(item => <Memory key = {item.id} arr={item} />)}
         </ul>
+                    <footer>
+        <p>Github Repository: <a href="https://github.com/pearlhulbert/GratitudeApp">https://github.com/pearlhulbert/GratitudeApp</a></p>
+        <p>By: Noelle Marshall and Pearl Hulbert</p>
+    </footer>
     </div>
   );
 }
